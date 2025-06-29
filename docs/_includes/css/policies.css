@@ -1,0 +1,21 @@
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: none;
+    font-size: x-large;
+}
+
+body {
+    background-color: #dbd9d9;
+    margin-bottom: 60px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+a {
+    color: #e70d0d;
+}
