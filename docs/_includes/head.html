@@ -2,6 +2,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width">
+    <meta http-equiv='content-language' content='en'>
+    <script>
+        console.log("ref=" + document.referrer)
+        setTimeout(function () {
+            // Check if referrer contains "miraitech", otherwise forward to main site
+            if (!document.referrer.includes("miraitech")) {
+                console.log("ref=" + document.referrer)
+                window.location.href = "http://www.miraitech.solutions/";
+            }
+        }, 30000);
+    </script>
 
     {% if site.plugins contains 'jekyll-seo-tag' %}
     {% seo %}
