@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var path = window.location.pathname || "/";
+        var query = window.location.search || "";
+        var hash = window.location.hash || "";
+        var destination = "https://miraitech.dev" + path + query + hash;
+        window.location.replace(destination);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>
+      This page has moved to
+      <a id="manual-link" href="https://miraitech.dev/">https://miraitech.dev/</a>.
+    </p>
+    <script>
+      (function () {
+        var path = window.location.pathname || "/";
+        var query = window.location.search || "";
+        var hash = window.location.hash || "";
+        var destination = "https://miraitech.dev" + path + query + hash;
+        document.getElementById("manual-link").href = destination;
+      })();
+    </script>
+  </body>
+</html>
