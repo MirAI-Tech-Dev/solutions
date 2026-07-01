@@ -46,11 +46,6 @@ Page Forward
       This page has moved to
       <a id="manual-link" href="https://miraitech.dev/">https://miraitech.dev/</a>.
     </p>
-    <script>
-      if (typeof window.getDestinationUrl === "function") {
-        document.getElementById("manual-link").href = window.getDestinationUrl();
-      }
-    </script>
   </body>
 </html>
 ```
@@ -103,11 +98,6 @@ cat > 404.html <<'HTML'
       This page has moved to
       <a id="manual-link" href="https://miraitech.dev/">https://miraitech.dev/</a>.
     </p>
-    <script>
-      if (typeof window.getDestinationUrl === "function") {
-        document.getElementById("manual-link").href = window.getDestinationUrl();
-      }
-    </script>
   </body>
 </html>
 HTML
