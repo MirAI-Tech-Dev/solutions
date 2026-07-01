@@ -31,14 +31,14 @@ Page Forward
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
     <script>
-      function getDestinationUrl() {
-        var path = window.location.pathname || "/";
-        var query = window.location.search || "";
-        var hash = window.location.hash || "";
+      window.getDestinationUrl = function () {
+        const path = window.location.pathname || "/";
+        const query = window.location.search || "";
+        const hash = window.location.hash || "";
         return "https://miraitech.dev" + path + query + hash;
-      }
+      };
 
-      window.location.replace(getDestinationUrl());
+      window.location.replace(window.getDestinationUrl());
     </script>
   </head>
   <body>
@@ -47,7 +47,9 @@ Page Forward
       <a id="manual-link" href="https://miraitech.dev/">https://miraitech.dev/</a>.
     </p>
     <script>
-      document.getElementById("manual-link").href = getDestinationUrl();
+      if (typeof window.getDestinationUrl === "function") {
+        document.getElementById("manual-link").href = window.getDestinationUrl();
+      }
     </script>
   </body>
 </html>
@@ -86,14 +88,14 @@ cat > 404.html <<'HTML'
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
     <script>
-      function getDestinationUrl() {
-        var path = window.location.pathname || "/";
-        var query = window.location.search || "";
-        var hash = window.location.hash || "";
+      window.getDestinationUrl = function () {
+        const path = window.location.pathname || "/";
+        const query = window.location.search || "";
+        const hash = window.location.hash || "";
         return "https://miraitech.dev" + path + query + hash;
-      }
+      };
 
-      window.location.replace(getDestinationUrl());
+      window.location.replace(window.getDestinationUrl());
     </script>
   </head>
   <body>
@@ -102,7 +104,9 @@ cat > 404.html <<'HTML'
       <a id="manual-link" href="https://miraitech.dev/">https://miraitech.dev/</a>.
     </p>
     <script>
-      document.getElementById("manual-link").href = getDestinationUrl();
+      if (typeof window.getDestinationUrl === "function") {
+        document.getElementById("manual-link").href = window.getDestinationUrl();
+      }
     </script>
   </body>
 </html>
