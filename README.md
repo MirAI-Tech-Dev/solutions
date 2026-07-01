@@ -31,13 +31,14 @@ Page Forward
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
     <script>
-      (function () {
+      function getDestinationUrl() {
         var path = window.location.pathname || "/";
         var query = window.location.search || "";
         var hash = window.location.hash || "";
-        var destination = "https://miraitech.dev" + path + query + hash;
-        window.location.replace(destination);
-      })();
+        return "https://miraitech.dev" + path + query + hash;
+      }
+
+      window.location.replace(getDestinationUrl());
     </script>
   </head>
   <body>
@@ -46,13 +47,7 @@ Page Forward
       <a id="manual-link" href="https://miraitech.dev/">https://miraitech.dev/</a>.
     </p>
     <script>
-      (function () {
-        var path = window.location.pathname || "/";
-        var query = window.location.search || "";
-        var hash = window.location.hash || "";
-        var destination = "https://miraitech.dev" + path + query + hash;
-        document.getElementById("manual-link").href = destination;
-      })();
+      document.getElementById("manual-link").href = getDestinationUrl();
     </script>
   </body>
 </html>
@@ -91,13 +86,14 @@ cat > 404.html <<'HTML'
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
     <script>
-      (function () {
+      function getDestinationUrl() {
         var path = window.location.pathname || "/";
         var query = window.location.search || "";
         var hash = window.location.hash || "";
-        var destination = "https://miraitech.dev" + path + query + hash;
-        window.location.replace(destination);
-      })();
+        return "https://miraitech.dev" + path + query + hash;
+      }
+
+      window.location.replace(getDestinationUrl());
     </script>
   </head>
   <body>
@@ -106,13 +102,7 @@ cat > 404.html <<'HTML'
       <a id="manual-link" href="https://miraitech.dev/">https://miraitech.dev/</a>.
     </p>
     <script>
-      (function () {
-        var path = window.location.pathname || "/";
-        var query = window.location.search || "";
-        var hash = window.location.hash || "";
-        var destination = "https://miraitech.dev" + path + query + hash;
-        document.getElementById("manual-link").href = destination;
-      })();
+      document.getElementById("manual-link").href = getDestinationUrl();
     </script>
   </body>
 </html>
