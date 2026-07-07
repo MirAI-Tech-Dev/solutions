@@ -23,6 +23,12 @@ Page Forward
 
 ## `404.html`
 
+GitHub Pages cannot emit real HTTP 301 redirects (it serves static files only
+— no `.htaccess`, `_redirects`, or server config). This page is the closest
+equivalent: a 0-second meta refresh (treated by search engines as
+301-equivalent), a canonical link, and a JS `location.replace()` fallback, all
+preserving the original path/query/hash.
+
 ```html
 <!doctype html>
 <html lang="en">
@@ -30,15 +36,33 @@ Page Forward
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
+    <!--
+      GitHub Pages cannot emit real HTTP 301 redirects (static-only hosting).
+      This page is the closest equivalent: a 0-second meta refresh (treated by
+      search engines as 301-equivalent) plus a canonical link and a JS
+      location.replace() fallback, all preserving the original path/query/hash.
+    -->
     <script>
-      window.getDestinationUrl = function () {
-        const path = window.location.pathname || "/";
-        const query = window.location.search || "";
-        const hash = window.location.hash || "";
-        return "https://miraitech.dev" + path + query + hash;
-      };
+      (function () {
+        var path = window.location.pathname || "/";
+        var query = window.location.search || "";
+        var hash = window.location.hash || "";
+        var dest = "https://miraitech.dev" + path + query + hash;
 
-      window.location.replace(window.getDestinationUrl());
+        // 301-equivalent signals for crawlers
+        var meta = document.createElement("meta");
+        meta.httpEquiv = "refresh";
+        meta.content = "0; url=" + dest;
+        document.head.appendChild(meta);
+
+        var link = document.createElement("link");
+        link.rel = "canonical";
+        link.href = dest;
+        document.head.appendChild(link);
+
+        // Immediate redirect for browsers (no history entry, like a 301)
+        window.location.replace(dest);
+      })();
     </script>
   </head>
   <body>
@@ -82,15 +106,33 @@ cat > 404.html <<'HTML'
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
+    <!--
+      GitHub Pages cannot emit real HTTP 301 redirects (static-only hosting).
+      This page is the closest equivalent: a 0-second meta refresh (treated by
+      search engines as 301-equivalent) plus a canonical link and a JS
+      location.replace() fallback, all preserving the original path/query/hash.
+    -->
     <script>
-      window.getDestinationUrl = function () {
-        const path = window.location.pathname || "/";
-        const query = window.location.search || "";
-        const hash = window.location.hash || "";
-        return "https://miraitech.dev" + path + query + hash;
-      };
+      (function () {
+        var path = window.location.pathname || "/";
+        var query = window.location.search || "";
+        var hash = window.location.hash || "";
+        var dest = "https://miraitech.dev" + path + query + hash;
 
-      window.location.replace(window.getDestinationUrl());
+        // 301-equivalent signals for crawlers
+        var meta = document.createElement("meta");
+        meta.httpEquiv = "refresh";
+        meta.content = "0; url=" + dest;
+        document.head.appendChild(meta);
+
+        var link = document.createElement("link");
+        link.rel = "canonical";
+        link.href = dest;
+        document.head.appendChild(link);
+
+        // Immediate redirect for browsers (no history entry, like a 301)
+        window.location.replace(dest);
+      })();
     </script>
   </head>
   <body>
